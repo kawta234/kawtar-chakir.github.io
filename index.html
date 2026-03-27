@@ -448,6 +448,54 @@ footer {
   .form-card:first-child, .form-card:last-child { border-radius: 12px; }
   footer { flex-direction: column; gap: 8px; text-align: center; padding: 20px 24px; }
 }
+  .chat-sim {
+  margin: 20px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #0f0f14;
+  color: white;
+  font-size: 0.75rem;
+}
+
+.chat-header {
+  padding: 10px 14px;
+  background: #1a1a22;
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+.chat-box {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 140px;
+}
+
+.msg {
+  max-width: 80%;
+  padding: 8px 12px;
+  border-radius: 10px;
+  animation: fadeInUp 0.4s ease;
+}
+
+.msg.user {
+  align-self: flex-end;
+  background: #e8866d;
+  color: white;
+}
+
+.msg.bot {
+  align-self: flex-start;
+  background: #2a2a35;
+  color: #ddd;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 </style>
 </head>
 <body>
@@ -612,15 +660,12 @@ footer {
             Chatbot conversationnel avec pipeline RAG complet pour une agence de formation. Ingestion de PDFs, indexation vectorielle FAISS, génération contextuelle via Ollama. Oriente les utilisateurs jusqu'à la prise de rendez-vous automatisée.
           </div>
           <div class="chat-sim">
-  <div class="chat-header">🤖 Live Demo — AI Training Assistant</div>
+  <div class="chat-header">🤖 Demo — AI Training Assistant</div>
 
   <div class="chat-box" id="chatBox">
-    <div class="msg user">Quels sont les modules du Data Scientist Bootcamp ?</div>
-    <div class="msg bot">
-      Le programme inclut Python, Machine Learning, Deep Learning
-      et des projets pratiques.
-    </div>
+    <!-- messages auto -->
   </div>
+</div>
 
   <div class="chat-input">
     <input type="text" id="userInput" placeholder="Pose une question..." />
@@ -863,6 +908,41 @@ const obs = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  <script>
+// Chat simulation (statique type vidéo)
+
+const messages = [
+  { type: "user", text: "Quels sont les modules du Data Scientist Bootcamp ?" },
+  { type: "bot", text: "Le programme inclut Python, Machine Learning, Deep Learning et des projets pratiques." },
+  { type: "user", text: "Est-ce qu’il y a des projets réels ?" },
+  { type: "bot", text: "Oui, vous travaillez sur des cas concrets avec des datasets professionnels." },
+  { type: "user", text: "Comment s’inscrire ?" },
+  { type: "bot", text: "Je peux vous orienter vers l’inscription ou planifier un appel avec un conseiller." }
+];
+
+let i = 0;
+
+function playChat() {
+  if (i >= messages.length) return;
+
+  const chatBox = document.getElementById("chatBox");
+
+  const msg = document.createElement("div");
+  msg.classList.add("msg", messages[i].type);
+  msg.innerText = messages[i].text;
+
+  chatBox.appendChild(msg);
+  chatBox.scrollTop = chatBox.scrollHeight;
+
+  i++;
+  setTimeout(playChat, 1800);
+}
+
+// lancer auto au chargement
+window.addEventListener("load", () => {
+  setTimeout(playChat, 1000);
+});
+</script>
 </script>
 </body>
 </html>
