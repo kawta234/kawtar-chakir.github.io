@@ -6,6 +6,18 @@
 <title>Kawtar Chakir — Data Scientist & ML Engineer</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;0,900;1,300;1,700&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
+  .proj-video {
+  margin-top: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.proj-video video {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+}
 :root {
   --ink: #0a0a0f;
   --paper: #f5f3ee;
@@ -697,22 +709,25 @@ footer {
       </div>
 
       <div class="proj-card p3 reveal">
-        <div class="proj-left">
-          <div>
-            <div class="proj-num">Projet 03</div>
-            <div class="proj-name">Texte vers<br>Vidéo</div>
-          </div>
-          <div class="proj-type">GenAI · Multimédia</div>
-        </div>
-        <div class="proj-right">
-          <div class="proj-desc">
-            Système de génération vidéo à partir de descriptions textuelles. Pipeline multimédia combinant modèles génératifs et post-traitement pour produire des contenus vidéo cohérents et personnalisés.
-          </div>
-          <div class="proj-tags">
-            <span class="proj-tag">Text-to-Video</span><span class="proj-tag">GenAI</span><span class="proj-tag">Deep Learning</span><span class="proj-tag">Transformers</span>
-          </div>
-        </div>
-      </div>
+  <div class="proj-left">
+    <!-- Image ou contenu à gauche -->
+  </div>
+
+  <div class="proj-right">
+    <h3 class="proj-title">Texte → Vidéo</h3>
+    <p class="proj-desc">
+      Résultat de génération vidéo à partir du texte fourni.
+    </p>
+
+    <!-- ✨ Ajoute la vidéo ici -->
+    <div class="proj-video">
+      <video controls autoplay muted loop playsinline>
+        <source src="generated_videos/video_rihab/video_rihab.mp4" type="video/mp4">
+        Votre navigateur ne supporte pas la vidéo.
+      </video>
+    </div>
+  </div>
+</div>
 
       <div class="proj-card p4 reveal">
         <div class="proj-left">
